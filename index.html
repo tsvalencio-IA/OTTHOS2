@@ -3,238 +3,130 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
-  <meta name="theme-color" content="#0b1020" />
-  <meta name="description" content="Athos: Guardião dos Portais — jogo 3D voxel/AR para celular." />
-  <title>Athos: Guardião dos Portais V59.0</title>
-
-  <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="icon" type="image/png" href="./icons/favicon.png" />
+  <meta name="theme-color" content="#0c1b33" />
+  <meta name="description" content="Otthos Life World — aventura infantil em mundo aberto 3D com casas, vizinhos, construção, desafios, AR, quiz e progressão." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Otthos Life World</title>
+  <link rel="manifest" href="./manifest.webmanifest?v=600" />
+  <link rel="icon" href="./icons/favicon.png" />
   <link rel="apple-touch-icon" href="./icons/icon-192.png" />
-  <link rel="stylesheet" href="./style.css?v=593-mobile-polish" />
-  <link rel="stylesheet" href="./assets/render-v54/v54-render-premium.css?v=593-mobile-polish" />
-
+  <link rel="stylesheet" href="./style.css?v=600" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
   <div id="app" class="app">
-    <section id="lobby" class="screen lobby active" aria-label="Lobby do jogo">
-      <div class="hero-shell">
-        <header class="hero">
-          <div class="athos-badge" aria-hidden="true">
-            <i class="eye l"></i><i class="eye r"></i><i class="flame f1"></i><i class="flame f2"></i>
-          </div>
-          <div>
-            <p class="eyebrow">AVENTURA DOS PORTAIS</p>
-            <h1>Athos Adventure 3D+</h1>
-            <p class="subtitle">Jogue, colete cristais e vença os monstros.</p>
-            <div class="hero-actions">
-              <button id="heroPlayBtn" class="pixel-btn primary huge play-alias" data-play="missions" data-test="play-missions" aria-label="Jogar Fases 3D iniciar missões" type="button">JOGAR</button>
-              <button id="heroFreeBtn" class="pixel-btn huge" data-play="free" data-test="play-free" aria-label="Brincar Livre AR por câmera" type="button">LIVRE</button>
-            </div>
-          </div>
-        </header>
+    <section id="lobby" class="screen lobby active" aria-label="Menu principal">
+      <div class="lobby-backdrop"></div>
+      <header class="brand-card">
+        <div class="brand-avatar" aria-hidden="true"><span></span><span></span></div>
+        <div>
+          <p class="eyebrow">MUNDO DE AVENTURA, VIDA E CRIAÇÃO</p>
+          <h1>OTTHOS LIFE WORLD</h1>
+          <p>Explore, cuide da sua casa, faça amigos, construa, cumpra missões e viva suas próprias aventuras.</p>
+        </div>
+      </header>
 
-        <div class="lobby-grid">
-          <section class="panel viewer-panel">
-            <div class="panel-head">
-              <div>
-                <strong>Athos 3D</strong>
-                <span id="modelStatus">Fixo e estável no mundo real.</span>
-              </div>
-              <em>3D + AR</em>
-            </div>
-
-            <video id="viewerCameraFeed" class="viewer-camera-feed" autoplay playsinline muted></video>
-            <model-viewer
-              id="nativeViewer"
-              class="native-viewer"
-              src="./athos.glb"
-              alt="Athos 3D"
-              camera-controls
-              interaction-prompt="none"
-              ar
-              ar-modes="scene-viewer webxr quick-look"
-              ar-placement="floor"
-              ar-scale="fixed"
-              shadow-intensity="1"
-              exposure="1"
-              environment-image="neutral"
-              camera-orbit="25deg 68deg 3.8m">
-              <button id="insideArNativeBtn" class="pixel-btn ar-native-btn" type="button" slot="ar-button" aria-label="AR Nativo realidade aumentada">📱 AR</button>
+      <main class="lobby-layout">
+        <section class="panel hero-panel">
+          <div class="viewer-shell">
+            <model-viewer id="nativeViewer" src="./athos.glb" alt="Otthos 3D" camera-controls interaction-prompt="none" ar ar-modes="scene-viewer webxr quick-look" ar-placement="floor" ar-scale="fixed" shadow-intensity="1.2" exposure="1.05" environment-image="neutral">
+              <button id="insideArBtn" slot="ar-button" class="floating-ar-btn" type="button">📱 Ver em AR</button>
             </model-viewer>
-            <button id="arNativeExternalBtn" class="pixel-btn primary ar-external-btn" type="button" data-test="ar-native" aria-label="AR Nativo abrir realidade aumentada">📱 Abrir em AR</button>
-            <div class="viewer-controls-simple viewer-controls-pro" aria-label="Controles do Athos 3D">
-              <button id="viewerRotateLeftBtn" class="viewer-mini-btn" type="button" aria-label="Girar para esquerda">↺<small>Girar</small></button>
-              <button id="viewerRotateRightBtn" class="viewer-mini-btn" type="button" aria-label="Girar para direita">↻<small>Girar</small></button>
-              <button id="viewerZoomInBtn" class="viewer-mini-btn" type="button" aria-label="Aproximar Athos">＋<small>Perto</small></button>
-              <button id="viewerZoomOutBtn" class="viewer-mini-btn" type="button" aria-label="Afastar Athos">－<small>Longe</small></button>
-              <button id="viewerMoveUpBtn" class="viewer-mini-btn" type="button" aria-label="Mover Athos para cima na tela">⬆<small>Subir</small></button>
-              <button id="viewerMoveDownBtn" class="viewer-mini-btn" type="button" aria-label="Mover Athos para baixo na tela">⬇<small>Descer</small></button>
-              <button id="viewerMoveLeftBtn" class="viewer-mini-btn" type="button" aria-label="Mover Athos para esquerda">⬅<small>Esq</small></button>
-              <button id="viewerMoveRightBtn" class="viewer-mini-btn" type="button" aria-label="Mover Athos para direita">➡<small>Dir</small></button>
-              <button id="viewerCameraBtn" class="viewer-mini-btn camera" type="button" aria-label="Ligar câmera real na prévia 3D">📷<small>Câmera</small></button>
-              <button id="viewerArFixedBtn" class="viewer-mini-btn ar" type="button" aria-label="Abrir Athos em AR fixo no chão">📱<small>AR fixo</small></button>
-              <button id="viewerBigBtn" class="viewer-mini-btn" type="button" aria-label="Abrir tela maior">⛶<small>Tela</small></button>
-              <button id="viewerResetBtn" class="viewer-mini-btn" type="button" aria-label="Resetar posição">🔄<small>Reset</small></button>
+          </div>
+          <div class="hero-copy">
+            <span class="badge">JOGO COMPLETO</span>
+            <h2>Seu mundo começa na Vila do Sol</h2>
+            <p>Casa própria, vizinhos, atividades, desafios, construção, veículos infantis e aventuras em um mundo aberto contínuo.</p>
+            <div class="hero-actions">
+              <button id="playBtn" class="btn primary xl" type="button">▶ ENTRAR NO MUNDO</button>
+              <button id="continueBtn" class="btn xl" type="button">↻ CONTINUAR</button>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <aside class="panel menu-panel" aria-label="Menu principal">
-            <div class="stats-grid">
-              <div><small>XP</small><b id="statXP">0</b></div>
-              <div><small>Fase</small><b id="statLevel">1</b></div>
-              <div><small>Medalhas</small><b id="statMedals">0</b></div>
-              <div><small>Recorde</small><b id="statBest">0</b></div>
-            </div>
-
-            <label class="field-label" for="difficultySelect">Dificuldade</label>
-            <select id="difficultySelect" class="pixel-select">
-              <option value="easy">Fácil — Otto se diverte sem travar</option>
-              <option value="medium">Médio — desafio justo</option>
-              <option value="hard">Difícil — guardião expert</option>
-            </select>
-
-            <div class="main-actions">
-              <button id="playBtn" class="pixel-btn primary big play-alias" data-play="missions" data-test="play-missions" aria-label="Jogar Fases 3D iniciar missões" type="button">JOGAR</button>
-              <button id="hubBtn" class="pixel-btn big play-alias" data-play="hub" data-test="play-hub" aria-label="Hub dos Portais explorar mundos" type="button">🌀 Hub</button>
-              <button id="freeBtn" class="pixel-btn big play-alias" data-play="free" data-test="play-free" aria-label="Brincar Livre AR por câmera" type="button">📷 Livre / AR</button>
-              <button id="quizBtn" class="pixel-btn big" data-test="quiz-open" aria-label="Quiz do Athos abrir desafio" type="button">🧠 Quiz</button>
-              <button id="askBtn" class="pixel-btn big" data-test="ask-open" aria-label="Falar com Athos perguntar" type="button">💬 Falar</button>
-              <button id="collectionBtn" class="pixel-btn big" type="button">🏅 Coleção</button>
-              <button id="resetBtn" class="pixel-btn danger big" type="button">🔄 Resetar</button>
-            </div>
-
-            <div class="hint-box">
-              Pegue cristais, vença monstros e abra o portal.
-            </div>
-          </aside>
-        </div>
-      </div>
-      <footer class="footer">Jogue, colete cristais e vença os monstros.</footer>
+        <aside class="panel menu-panel">
+          <div class="profile-strip">
+            <div class="profile-level"><small>NÍVEL</small><strong id="lobbyLevel">1</strong></div>
+            <div><small>MOEDAS</small><strong id="lobbyCoins">500</strong></div>
+            <div><small>REPUTAÇÃO</small><strong id="lobbyRep">0</strong></div>
+            <div><small>MEDALHAS</small><strong id="lobbyMedals">0</strong></div>
+          </div>
+          <div class="menu-grid">
+            <button id="installBtn" class="menu-tile install" type="button"><b>⬇</b><span>Instalar aplicativo</span></button>
+            <button id="arBtn" class="menu-tile" type="button"><b>📱</b><span>Realidade aumentada</span></button>
+            <button id="quizBtn" class="menu-tile" type="button"><b>🧠</b><span>Quiz do Otthos</span></button>
+            <button id="talkBtn" class="menu-tile" type="button"><b>💬</b><span>Conversar</span></button>
+            <button id="collectionBtn" class="menu-tile" type="button"><b>🏅</b><span>Coleção</span></button>
+            <button id="moldsBtn" class="menu-tile" type="button"><b>🧩</b><span>Moldes 3D</span></button>
+            <button id="howBtn" class="menu-tile" type="button"><b>❓</b><span>Como jogar</span></button>
+            <button id="settingsBtn" class="menu-tile" type="button"><b>⚙</b><span>Configurações</span></button>
+          </div>
+          <p id="installHint" class="install-hint">Você pode instalar o Otthos como aplicativo no celular.</p>
+        </aside>
+      </main>
+      <footer>Powered by thIAguinho Soluções Digitais</footer>
     </section>
 
-    <section id="game" class="screen game" aria-label="Jogo 3D">
-      <video id="cameraFeed" class="camera-feed" autoplay playsinline muted></video>
-      <div id="threeStage" class="three-stage"></div>
-      <div id="screenFlash" class="screen-flash"></div>
+    <section id="game" class="screen game" aria-label="Otthos Life World">
+      <div id="stage" class="stage"></div>
+      <div id="screenTint" class="screen-tint"></div>
 
-      <div class="hud top-hud">
-        <!-- Badge nível + XP (canto esquerdo) -->
-        <div class="hud-level-badge">
-          <div class="hud-avatar" id="hudAvatarBadge">
-            <span class="hud-avatar-face">👾</span>
-            <span class="hud-level-num" id="hudLevel">1</span>
-          </div>
-          <div class="hud-xp-block">
-            <div class="hud-xp-bar-wrap">
-              <div class="hud-xp-bar-fill" id="hudXPBar" style="width:0%"></div>
-            </div>
-            <span class="hud-xp-label">XP <b id="hudXP">0</b></span>
-          </div>
+      <header class="game-hud">
+        <div class="identity-box">
+          <div class="mini-avatar"><i></i><i></i><span id="hudLevel">1</span></div>
+          <div class="xp-block"><b>XP</b><div><span id="xpFill"></span></div><small id="xpText">0 / 1000</small></div>
         </div>
-        <!-- Corações individuais -->
-        <div class="hud-hearts-row" id="hudHeartsRow" aria-label="Vida">
-          <span class="hud-heart" data-h="1">❤️</span>
-          <span class="hud-heart" data-h="2">❤️</span>
-          <span class="hud-heart" data-h="3">❤️</span>
-          <span class="hud-heart" data-h="4">❤️</span>
-          <span class="hud-heart" data-h="5">❤️</span>
+        <div class="needs-box" aria-label="Necessidades">
+          <div title="Fome">🍎<span><i id="needHunger"></i></span></div>
+          <div title="Energia">⚡<span><i id="needEnergy"></i></span></div>
+          <div title="Diversão">🎮<span><i id="needFun"></i></span></div>
+          <div title="Higiene">💧<span><i id="needHygiene"></i></span></div>
         </div>
-        <!-- Gemas (canto direito) + settings -->
-        <div class="hud-right-cluster">
-          <div class="hud-gems-box">
-            <span class="hud-gem-icon">💎</span>
-            <b id="hudCrystals" class="hud-gem-count">0</b>
-            <button id="hudGemPlusBtn" class="hud-gem-plus" aria-label="Mais cristais" type="button">+</button>
-          </div>
-          <button class="hud-settings-btn" id="hudSettingsBtn" type="button" aria-label="Configurações">⚙</button>
-        </div>
-        <!-- Dados ocultos preservados para testes e lógica -->
-        <b id="hudHearts" style="display:none" aria-hidden="true">5</b>
-        <b id="hudEnemies" style="display:none" aria-hidden="true">0/0</b>
-        <b id="hudTime" style="display:none" aria-hidden="true">∞</b>
+        <div class="currency-box"><span>🪙</span><strong id="hudCoins">500</strong></div>
+      </header>
+
+      <section id="missionCard" class="mission-card">
+        <div class="mission-icon">◆</div>
+        <div><small id="missionChapter">MISSÃO PRINCIPAL</small><strong id="missionTitle">Arrume sua casa</strong><p id="missionStep">Entre na Casa do Otthos.</p><div class="mission-progress"><i id="missionFill"></i></div></div>
+      </section>
+
+      <nav class="quick-bar" aria-label="Atalhos">
+        <button id="inventoryBtn" type="button">🎒<span>Itens</span></button>
+        <button id="buildBtn" type="button">🧱<span>Construir</span></button>
+        <button id="mapBtn" type="button">🗺<span>Mapa</span></button>
+        <button id="gameSettingsBtn" type="button">⚙<span>Menu</span></button>
+      </nav>
+
+      <div id="contextPrompt" class="context-prompt" hidden><span id="contextIcon">✋</span><div><b id="contextLabel">Interagir</b><small id="contextHint">Toque em AÇÃO</small></div></div>
+
+      <div id="joystick" class="joystick" aria-label="Joystick"><div class="joystick-ring"><i id="joystickKnob"></i></div></div>
+      <div class="primary-actions" aria-label="Ações principais">
+        <button id="specialBtn" class="round special" type="button"><b>🔥</b><span>Poder</span></button>
+        <button id="actionBtn" class="round action" type="button"><b>✋</b><span>Ação</span></button>
+        <button id="jumpBtn" class="round jump" type="button"><b>⬆</b><span>Pular</span></button>
       </div>
 
-      <div id="objectiveCard" class="objective-card">
-        <div class="objective-icon-wrap" aria-hidden="true">
-          <span class="objective-icon-core"></span>
-        </div>
-        <div class="objective-copy">
-          <small id="worldName" class="objective-world">Campo dos Blocos</small>
-          <strong id="objectiveText">Ative os portais e salve os mundos!</strong>
-          <div id="objectiveSubtitle" class="objective-subtitle">0 / 3 portais ativados</div>
-          <div class="objective-progress"><span id="objectiveProgress"></span></div>
-        </div>
-      </div>
-
-      <div id="tutorialBox" class="tutorial-box" hidden>
-        <b id="tutorialTitle">Tutorial</b>
-        <span id="tutorialText">Use o joystick para andar.</span>
-      </div>
-
+      <div id="buildBadge" class="build-badge" hidden>CONSTRUÇÃO: <b id="buildTypeLabel">Bloco</b> — toque em AÇÃO para colocar</div>
+      <div id="vehicleBadge" class="vehicle-badge" hidden>🚗 Carrinho ativo — AÇÃO para sair</div>
       <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
-      <div id="miniMap" class="minimap" aria-hidden="true">
-        <span id="miniPlayer"></span><span id="miniPortal"></span>
-      </div>
-
-      <div class="game-controls" aria-label="Controles do jogo">
-        <div class="left-zone">
-          <div id="joystick" class="joystick" aria-label="Joystick virtual">
-            <div class="joy-ring"><span id="joyKnob" class="joy-knob"></span></div>
-            <small>joystick 3D</small>
-          </div>
-          <div class="direction-buttons" aria-label="Movimento por botões">
-            <button id="moveForwardBtn" class="move-btn" data-move="forward" aria-label="▲ Fundo" type="button">▲<span>Fundo</span></button>
-            <button id="moveLeftBtn" class="move-btn" data-move="left" aria-label="◀ Esq" type="button">◀<span>Esq</span></button>
-            <button id="moveRightBtn" class="move-btn" data-move="right" aria-label="▶ Dir" type="button">▶<span>Dir</span></button>
-            <button id="moveBackBtn" class="move-btn" data-move="back" aria-label="▼ Voltar" type="button">▼<span>Voltar</span></button>
-          </div>
-        </div>
-
-        <div class="right-zone">
-          <div class="action-grid">
-            <button id="jumpBtn" class="action-btn a" data-action="jump" aria-label="A Pular" type="button">A<span>Pular</span></button>
-            <button id="powerBtn" class="action-btn b" data-action="power" aria-label="B Poder" type="button">B<span>Poder</span></button>
-            <button id="crouchBtn" class="action-btn y" data-action="crouch" data-hold="crouch" aria-label="Y Abaixar" type="button">Y<span>Abaixar</span></button>
-            <button id="sizeBtn" class="action-btn x" data-action="size" aria-label="X Tamanho/Girar" type="button">X<span>Tamanho</span></button>
-            <button id="normalBtn" class="action-btn" data-action="normal" aria-label="N Normal" type="button">N<span>Normal</span></button>
-            <button class="action-btn" data-action="spin" type="button">R<span>Girar</span></button>
-            <button class="action-btn" data-action="interact" type="button">I<span>Ação</span></button>
-            <button id="pauseBtn" class="action-btn warn" data-action="pause" aria-label="Pausa" type="button">⏸<span>Pausa</span></button>
-            <button id="exitBtn" class="action-btn danger" data-action="exit" aria-label="Sair" type="button">⏹<span>Sair</span></button>
-          </div>
-        </div>
-      </div>
     </section>
-
-    <model-viewer
-      id="arAnchorViewer"
-      class="ar-anchor-viewer"
-      src="./athos.glb"
-      alt="Athos AR ancorado"
-      ar
-      ar-modes="scene-viewer webxr quick-look"
-      ar-placement="floor"
-      ar-scale="fixed"
-      interaction-prompt="none"
-      camera-controls
-      shadow-intensity="1"
-      exposure="1"
-      environment-image="neutral">
-    </model-viewer>
 
     <div id="modal" class="modal" hidden>
-      <div class="modal-card panel">
-        <div class="modal-top">
-          <h2 id="modalTitle">Modal</h2>
-          <button id="modalClose" class="pixel-btn danger modal-close-main" type="button" aria-label="X Fechar modal">X Fechar</button>
-        </div>
+      <div class="modal-card">
+        <header><h2 id="modalTitle">Janela</h2><button id="modalClose" type="button" aria-label="Fechar">✕</button></header>
         <div id="modalBody" class="modal-body"></div>
       </div>
     </div>
+
+    <div id="installBanner" class="install-banner" hidden>
+      <div><b>Instalar Otthos</b><span>Jogue como aplicativo, com tela cheia.</span></div>
+      <button id="installBannerBtn" class="btn primary" type="button">Instalar</button>
+      <button id="installBannerClose" class="icon-btn" type="button">✕</button>
+    </div>
   </div>
 
-  <script src="./assets/render-v54/v54-render-premium.js?v=593-mobile-polish"></script>
-  <script src="./app.js?v=593-mobile-polish"></script>
+  <script src="./app.js?v=600"></script>
 </body>
 </html>

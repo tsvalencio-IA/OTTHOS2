@@ -1,0 +1,19 @@
+OTTHOS LIFE WORLD V600 COMPLETE
+
+ARQUITETURA
+- index.html: lobby, PWA, AR, HUD e controles.
+- style.css: layout responsivo retrato/paisagem e modais.
+- app.js: estado, mundo 3D, física, casas, interiores, NPCs, missões, construção, combate e multiplayer-ready.
+- sw.js + manifest.webmanifest: instalação e cache.
+
+TESTES AUTOMATIZADOS/ESTÁTICOS
+- node --check app.js: aprovado.
+- execução de topo com DOM simulado: aprovada.
+- inicialização completa com Three.js simulado: aprovada.
+- mundo criado: 6 casas, 5 NPCs, 5 inimigos, 105 interações.
+- porta da Casa do Otthos detectada.
+- entrada na casa e cameraMode=interior aprovados.
+- saída da casa aprovada.
+
+LIMITAÇÃO CONHECIDA
+- Multiplayer online real precisa de credenciais/configuração de Firebase ou servidor WebSocket. A versão inclui playerId, contrato de adapter e prévia local entre abas.

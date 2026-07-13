@@ -1,25 +1,16 @@
 {
-  "name": "Otthos Life World V593",
-  "short_name": "Otthos V593",
-  "start_url": "./index.html?v=593-mobile-polish",
+  "name": "Otthos Life World",
+  "short_name": "Otthos",
+  "description": "Jogo infantil em mundo aberto 3D com casas, vizinhos, construção, desafios, AR, quiz e progressão.",
+  "start_url": "./index.html?v=600",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#080b16",
-  "theme_color": "#0b1020",
-  "description": "Otthos Life World V593 com correção profissional de escala mobile, botões dentro da tela, configurações sem cenários antigos, render com menos névoa e câmera mais próxima.",
+  "background_color": "#07101e",
+  "theme_color": "#0c1b33",
   "icons": [
-    {
-      "src": "./icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "./icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+    {"src":"./icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ],
+  "categories": ["games", "kids", "education", "entertainment"]
 }
