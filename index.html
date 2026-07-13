@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Athos: Guardião dos Portais — jogo 3D voxel/AR para celular." />
+  <title>Athos: Guardião dos Portais V59.0</title>
+
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="./icons/favicon.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./style.css?v=593-mobile-polish" />
+  <link rel="stylesheet" href="./assets/render-v54/v54-render-premium.css?v=593-mobile-polish" />
+
+</head>
+<body>
+  <div id="app" class="app">
+    <section id="lobby" class="screen lobby active" aria-label="Lobby do jogo">
+      <div class="hero-shell">
+        <header class="hero">
+          <div class="athos-badge" aria-hidden="true">
+            <i class="eye l"></i><i class="eye r"></i><i class="flame f1"></i><i class="flame f2"></i>
+          </div>
+          <div>
+            <p class="eyebrow">AVENTURA DOS PORTAIS</p>
+            <h1>Athos Adventure 3D+</h1>
+            <p class="subtitle">Jogue, colete cristais e vença os monstros.</p>
+            <div class="hero-actions">
+              <button id="heroPlayBtn" class="pixel-btn primary huge play-alias" data-play="missions" data-test="play-missions" aria-label="Jogar Fases 3D iniciar missões" type="button">JOGAR</button>
+              <button id="heroFreeBtn" class="pixel-btn huge" data-play="free" data-test="play-free" aria-label="Brincar Livre AR por câmera" type="button">LIVRE</button>
+            </div>
+          </div>
+        </header>
+
+        <div class="lobby-grid">
+          <section class="panel viewer-panel">
+            <div class="panel-head">
+              <div>
+                <strong>Athos 3D</strong>
+                <span id="modelStatus">Fixo e estável no mundo real.</span>
+              </div>
+              <em>3D + AR</em>
+            </div>
+
+            <video id="viewerCameraFeed" class="viewer-camera-feed" autoplay playsinline muted></video>
+            <model-viewer
+              id="nativeViewer"
+              class="native-viewer"
+              src="./athos.glb"
+              alt="Athos 3D"
+              camera-controls
+              interaction-prompt="none"
+              ar
+              ar-modes="scene-viewer webxr quick-look"
+              ar-placement="floor"
+              ar-scale="fixed"
+              shadow-intensity="1"
+              exposure="1"
+              environment-image="neutral"
+              camera-orbit="25deg 68deg 3.8m">
+              <button id="insideArNativeBtn" class="pixel-btn ar-native-btn" type="button" slot="ar-button" aria-label="AR Nativo realidade aumentada">📱 AR</button>
+            </model-viewer>
+            <button id="arNativeExternalBtn" class="pixel-btn primary ar-external-btn" type="button" data-test="ar-native" aria-label="AR Nativo abrir realidade aumentada">📱 Abrir em AR</button>
+            <div class="viewer-controls-simple viewer-controls-pro" aria-label="Controles do Athos 3D">
+              <button id="viewerRotateLeftBtn" class="viewer-mini-btn" type="button" aria-label="Girar para esquerda">↺<small>Girar</small></button>
+              <button id="viewerRotateRightBtn" class="viewer-mini-btn" type="button" aria-label="Girar para direita">↻<small>Girar</small></button>
+              <button id="viewerZoomInBtn" class="viewer-mini-btn" type="button" aria-label="Aproximar Athos">＋<small>Perto</small></button>
+              <button id="viewerZoomOutBtn" class="viewer-mini-btn" type="button" aria-label="Afastar Athos">－<small>Longe</small></button>
+              <button id="viewerMoveUpBtn" class="viewer-mini-btn" type="button" aria-label="Mover Athos para cima na tela">⬆<small>Subir</small></button>
+              <button id="viewerMoveDownBtn" class="viewer-mini-btn" type="button" aria-label="Mover Athos para baixo na tela">⬇<small>Descer</small></button>
+              <button id="viewerMoveLeftBtn" class="viewer-mini-btn" type="button" aria-label="Mover Athos para esquerda">⬅<small>Esq</small></button>
+              <button id="viewerMoveRightBtn" class="viewer-mini-btn" type="button" aria-label="Mover Athos para direita">➡<small>Dir</small></button>
+              <button id="viewerCameraBtn" class="viewer-mini-btn camera" type="button" aria-label="Ligar câmera real na prévia 3D">📷<small>Câmera</small></button>
+              <button id="viewerArFixedBtn" class="viewer-mini-btn ar" type="button" aria-label="Abrir Athos em AR fixo no chão">📱<small>AR fixo</small></button>
+              <button id="viewerBigBtn" class="viewer-mini-btn" type="button" aria-label="Abrir tela maior">⛶<small>Tela</small></button>
+              <button id="viewerResetBtn" class="viewer-mini-btn" type="button" aria-label="Resetar posição">🔄<small>Reset</small></button>
+            </div>
+          </section>
+
+          <aside class="panel menu-panel" aria-label="Menu principal">
+            <div class="stats-grid">
+              <div><small>XP</small><b id="statXP">0</b></div>
+              <div><small>Fase</small><b id="statLevel">1</b></div>
+              <div><small>Medalhas</small><b id="statMedals">0</b></div>
+              <div><small>Recorde</small><b id="statBest">0</b></div>
+            </div>
+
+            <label class="field-label" for="difficultySelect">Dificuldade</label>
+            <select id="difficultySelect" class="pixel-select">
+              <option value="easy">Fácil — Otto se diverte sem travar</option>
+              <option value="medium">Médio — desafio justo</option>
+              <option value="hard">Difícil — guardião expert</option>
+            </select>
+
+            <div class="main-actions">
+              <button id="playBtn" class="pixel-btn primary big play-alias" data-play="missions" data-test="play-missions" aria-label="Jogar Fases 3D iniciar missões" type="button">JOGAR</button>
+              <button id="hubBtn" class="pixel-btn big play-alias" data-play="hub" data-test="play-hub" aria-label="Hub dos Portais explorar mundos" type="button">🌀 Hub</button>
+              <button id="freeBtn" class="pixel-btn big play-alias" data-play="free" data-test="play-free" aria-label="Brincar Livre AR por câmera" type="button">📷 Livre / AR</button>
+              <button id="quizBtn" class="pixel-btn big" data-test="quiz-open" aria-label="Quiz do Athos abrir desafio" type="button">🧠 Quiz</button>
+              <button id="askBtn" class="pixel-btn big" data-test="ask-open" aria-label="Falar com Athos perguntar" type="button">💬 Falar</button>
+              <button id="collectionBtn" class="pixel-btn big" type="button">🏅 Coleção</button>
+              <button id="resetBtn" class="pixel-btn danger big" type="button">🔄 Resetar</button>
+            </div>
+
+            <div class="hint-box">
+              Pegue cristais, vença monstros e abra o portal.
+            </div>
+          </aside>
+        </div>
+      </div>
+      <footer class="footer">Jogue, colete cristais e vença os monstros.</footer>
+    </section>
+
+    <section id="game" class="screen game" aria-label="Jogo 3D">
+      <video id="cameraFeed" class="camera-feed" autoplay playsinline muted></video>
+      <div id="threeStage" class="three-stage"></div>
+      <div id="screenFlash" class="screen-flash"></div>
+
+      <div class="hud top-hud">
+        <!-- Badge nível + XP (canto esquerdo) -->
+        <div class="hud-level-badge">
+          <div class="hud-avatar" id="hudAvatarBadge">
+            <span class="hud-avatar-face">👾</span>
+            <span class="hud-level-num" id="hudLevel">1</span>
+          </div>
+          <div class="hud-xp-block">
+            <div class="hud-xp-bar-wrap">
+              <div class="hud-xp-bar-fill" id="hudXPBar" style="width:0%"></div>
+            </div>
+            <span class="hud-xp-label">XP <b id="hudXP">0</b></span>
+          </div>
+        </div>
+        <!-- Corações individuais -->
+        <div class="hud-hearts-row" id="hudHeartsRow" aria-label="Vida">
+          <span class="hud-heart" data-h="1">❤️</span>
+          <span class="hud-heart" data-h="2">❤️</span>
+          <span class="hud-heart" data-h="3">❤️</span>
+          <span class="hud-heart" data-h="4">❤️</span>
+          <span class="hud-heart" data-h="5">❤️</span>
+        </div>
+        <!-- Gemas (canto direito) + settings -->
+        <div class="hud-right-cluster">
+          <div class="hud-gems-box">
+            <span class="hud-gem-icon">💎</span>
+            <b id="hudCrystals" class="hud-gem-count">0</b>
+            <button id="hudGemPlusBtn" class="hud-gem-plus" aria-label="Mais cristais" type="button">+</button>
+          </div>
+          <button class="hud-settings-btn" id="hudSettingsBtn" type="button" aria-label="Configurações">⚙</button>
+        </div>
+        <!-- Dados ocultos preservados para testes e lógica -->
+        <b id="hudHearts" style="display:none" aria-hidden="true">5</b>
+        <b id="hudEnemies" style="display:none" aria-hidden="true">0/0</b>
+        <b id="hudTime" style="display:none" aria-hidden="true">∞</b>
+      </div>
+
+      <div id="objectiveCard" class="objective-card">
+        <div class="objective-icon-wrap" aria-hidden="true">
+          <span class="objective-icon-core"></span>
+        </div>
+        <div class="objective-copy">
+          <small id="worldName" class="objective-world">Campo dos Blocos</small>
+          <strong id="objectiveText">Ative os portais e salve os mundos!</strong>
+          <div id="objectiveSubtitle" class="objective-subtitle">0 / 3 portais ativados</div>
+          <div class="objective-progress"><span id="objectiveProgress"></span></div>
+        </div>
+      </div>
+
+      <div id="tutorialBox" class="tutorial-box" hidden>
+        <b id="tutorialTitle">Tutorial</b>
+        <span id="tutorialText">Use o joystick para andar.</span>
+      </div>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+      <div id="miniMap" class="minimap" aria-hidden="true">
+        <span id="miniPlayer"></span><span id="miniPortal"></span>
+      </div>
+
+      <div class="game-controls" aria-label="Controles do jogo">
+        <div class="left-zone">
+          <div id="joystick" class="joystick" aria-label="Joystick virtual">
+            <div class="joy-ring"><span id="joyKnob" class="joy-knob"></span></div>
+            <small>joystick 3D</small>
+          </div>
+          <div class="direction-buttons" aria-label="Movimento por botões">
+            <button id="moveForwardBtn" class="move-btn" data-move="forward" aria-label="▲ Fundo" type="button">▲<span>Fundo</span></button>
+            <button id="moveLeftBtn" class="move-btn" data-move="left" aria-label="◀ Esq" type="button">◀<span>Esq</span></button>
+            <button id="moveRightBtn" class="move-btn" data-move="right" aria-label="▶ Dir" type="button">▶<span>Dir</span></button>
+            <button id="moveBackBtn" class="move-btn" data-move="back" aria-label="▼ Voltar" type="button">▼<span>Voltar</span></button>
+          </div>
+        </div>
+
+        <div class="right-zone">
+          <div class="action-grid">
+            <button id="jumpBtn" class="action-btn a" data-action="jump" aria-label="A Pular" type="button">A<span>Pular</span></button>
+            <button id="powerBtn" class="action-btn b" data-action="power" aria-label="B Poder" type="button">B<span>Poder</span></button>
+            <button id="crouchBtn" class="action-btn y" data-action="crouch" data-hold="crouch" aria-label="Y Abaixar" type="button">Y<span>Abaixar</span></button>
+            <button id="sizeBtn" class="action-btn x" data-action="size" aria-label="X Tamanho/Girar" type="button">X<span>Tamanho</span></button>
+            <button id="normalBtn" class="action-btn" data-action="normal" aria-label="N Normal" type="button">N<span>Normal</span></button>
+            <button class="action-btn" data-action="spin" type="button">R<span>Girar</span></button>
+            <button class="action-btn" data-action="interact" type="button">I<span>Ação</span></button>
+            <button id="pauseBtn" class="action-btn warn" data-action="pause" aria-label="Pausa" type="button">⏸<span>Pausa</span></button>
+            <button id="exitBtn" class="action-btn danger" data-action="exit" aria-label="Sair" type="button">⏹<span>Sair</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <model-viewer
+      id="arAnchorViewer"
+      class="ar-anchor-viewer"
+      src="./athos.glb"
+      alt="Athos AR ancorado"
+      ar
+      ar-modes="scene-viewer webxr quick-look"
+      ar-placement="floor"
+      ar-scale="fixed"
+      interaction-prompt="none"
+      camera-controls
+      shadow-intensity="1"
+      exposure="1"
+      environment-image="neutral">
+    </model-viewer>
+
+    <div id="modal" class="modal" hidden>
+      <div class="modal-card panel">
+        <div class="modal-top">
+          <h2 id="modalTitle">Modal</h2>
+          <button id="modalClose" class="pixel-btn danger modal-close-main" type="button" aria-label="X Fechar modal">X Fechar</button>
+        </div>
+        <div id="modalBody" class="modal-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/render-v54/v54-render-premium.js?v=593-mobile-polish"></script>
+  <script src="./app.js?v=593-mobile-polish"></script>
+</body>
+</html>
