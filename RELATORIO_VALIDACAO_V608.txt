@@ -1,0 +1,4 @@
+OTTHOS V608
+Sintaxe: OK
+Simulação matemática: distância=7.68, velocidade=10.58
+Falha V607 corrigida: sitUntil não bloqueia mais updateVehiclePhysics.

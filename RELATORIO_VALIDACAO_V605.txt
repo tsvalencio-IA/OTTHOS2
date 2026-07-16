@@ -1,0 +1,61 @@
+⚠️ AVISO (adicionado na passada V606 — Claude): este relatório valida apenas
+a V605 original. Ele NÃO cobre a física de veículo, o carro, a textura, o
+céu ou a estrada novos da V606. Não usar este arquivo como evidência de que
+a V606 foi testada. Ver CHANGELOG_CLAUDE_VEICULOS.md para o que mudou.
+================================================
+
+OTTHOS LIFE WORLD V605 — RELATÓRIO DE VALIDAÇÃO
+================================================
+
+BASE
+- V600 completa + evoluções válidas da V601.
+- Alterações quebradas de física/personagem/layout das V602/V603/V604 não foram usadas como base cega.
+
+VALIDAÇÕES EXECUTADAS
+1. Sintaxe JavaScript
+   - app.js: aprovado com node --check.
+   - sw.js: aprovado com node --check.
+   - assets/js/save-db.js: aprovado com node --check.
+   - F12_TESTE_OTTHOS_V605_JOGABILIDADE_COMERCIAL.js: aprovado com node --check.
+
+2. Inicialização e conteúdo em navegador automatizado com camada Three.js compatível
+   - Game loop iniciou.
+   - Canvas foi criado.
+   - 6 casas, 5 NPCs, 5 inimigos e 110 interações foram construídos.
+   - Nenhuma exceção JavaScript foi capturada durante a bateria principal.
+
+3. Personagem e física
+   - Personagem de gameplay confirmado como procedural Otthos.
+   - athos.glb não é carregado pelo gameplay; permanece somente no lobby/AR.
+   - Base visual dos pés medida entre 0,010 m e 0,025 m acima da raiz física durante repouso/caminhada.
+   - Deslocamento testado: aproximadamente 5,30 unidades.
+   - Braços e pernas mudaram de rotação durante a caminhada.
+   - Pulo subiu, caiu e terminou novamente em y=0, grounded=true.
+
+4. Ação contextual
+   - Fogão: contexto `stove-home`; abriu modal `Cozinha`.
+   - Baú da casa: contexto `chest-home`; abriu `Baú da Casa do Otthos`, não inventário genérico.
+   - NPC Nino: abriu menu social com conversa, piada, presente, discussão, corrida, pega-moedas, disputa de casa, trabalho e convite.
+
+5. Mapa e interface
+   - Mapa contém 15 pontos reais, marcador VOCÊ, direção, distâncias e 6 destinos próximos.
+   - Ao abrir o mapa, joystick, ações principais, habilidades e menu rápido ficam ocultos e sem clique.
+   - Nenhum botão ficou fora da tela ou sobreposto nos tamanhos:
+     640x360, 740x360, 844x390, 915x412,
+     360x800, 390x844 e 412x915.
+   - O mesmo teste passou com o menu Vida expandido.
+
+6. Instalação e salvamento
+   - Existe somente um botão de instalação no lobby.
+   - O botão fica oculto sem `beforeinstallprompt` e após o aplicativo estar instalado.
+   - Configurações mostra instalação somente enquanto não estiver em modo instalado.
+   - IndexedDB schema 605, dois backups internos, localStorage de emergência, autosave a cada 5 segundos e exportação/importação estão implementados.
+
+LIMITAÇÃO HONESTA DA VALIDAÇÃO
+- O ambiente de geração bloqueia navegação HTTP local e não permite executar o render WebGL real com o CDN externo do Three.js em uma origem normal. Por isso, o teste automatizado utilizou uma camada Three.js compatível para validar lógica, física, animação, DOM e responsividade.
+- O teste visual final com GPU, instalação PWA e IndexedDB real precisa ser executado no GitHub Pages e no aparelho físico. O arquivo F12 incluído faz essa auditoria no navegador publicado.
+
+CONCLUSÃO
+- A versão está apta para teste real no GitHub Pages.
+- Não é tecnicamente responsável prometer ausência absoluta de bugs antes do teste no celular físico.
+- Nenhuma falha foi encontrada nas verificações automatizadas executadas acima.

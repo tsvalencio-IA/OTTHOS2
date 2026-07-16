@@ -4,16 +4,37 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
   <meta name="theme-color" content="#0c1b33" />
-  <meta name="description" content="Otthos Life World — aventura infantil em mundo aberto 3D com casas, vizinhos, construção, desafios, AR, quiz e progressão." />
+  <meta name="description" content="Otthos Life World — simulador de vida infantil em mundo aberto 3D com casas, vizinhos, roupas, profissões, construção, desafios, AR, quiz e progressão." />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Otthos Life World</title>
-  <link rel="manifest" href="./manifest.webmanifest?v=600" />
+  <link rel="manifest" href="./manifest.webmanifest?v=613" />
   <link rel="icon" href="./icons/favicon.png" />
   <link rel="apple-touch-icon" href="./icons/icon-192.png" />
-  <link rel="stylesheet" href="./style.css?v=600" />
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="./style.css?v=613" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Visualizador/AR verdadeiramente sob demanda: não baixa model-viewer nem athos.glb no boot.
+    window.loadModelViewerLib = function loadModelViewerLib(){
+      if (customElements.get('model-viewer')) return Promise.resolve(true);
+      if (window.__mvPromise) return window.__mvPromise;
+      window.__mvPromise = new Promise((resolve, reject) => {
+        const previous = document.querySelector('script[data-otthos-model-viewer]');
+        if (previous) previous.remove();
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.dataset.otthosModelViewer = '1';
+        script.src = 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js';
+        const timer = setTimeout(() => fail(new Error('Tempo esgotado carregando model-viewer')), 15000);
+        const reset = () => { clearTimeout(timer); window.__mvPromise = null; };
+        const fail = error => { reset(); script.remove(); reject(error); };
+        script.onerror = () => fail(new Error('Falha de rede carregando model-viewer'));
+        script.onload = () => customElements.whenDefined('model-viewer').then(() => { clearTimeout(timer); resolve(true); }).catch(fail);
+        document.head.appendChild(script);
+      });
+      return window.__mvPromise;
+    };
+  </script>
 </head>
 <body>
   <div id="app" class="app">
@@ -30,8 +51,14 @@
 
       <main class="lobby-layout">
         <section class="panel hero-panel">
-          <div class="viewer-shell">
-            <model-viewer id="nativeViewer" src="./athos.glb" alt="Otthos 3D" camera-controls interaction-prompt="none" ar ar-modes="scene-viewer webxr quick-look" ar-placement="floor" ar-scale="fixed" shadow-intensity="1.2" exposure="1.05" environment-image="neutral">
+          <div id="viewerShell" class="viewer-shell">
+            <div id="viewerPlaceholder" class="viewer-placeholder">
+              <div class="viewer-placeholder-mark" aria-hidden="true">🔥</div>
+              <strong>Otthos 3D e Realidade Aumentada</strong>
+              <span id="viewerStatus">Carregue somente quando quiser usar o visualizador.</span>
+              <button id="viewerLoadBtn" class="btn primary" type="button">Carregar visualizador 3D</button>
+            </div>
+            <model-viewer id="nativeViewer" src="./athos.glb" alt="Otthos 3D" camera-controls interaction-prompt="none" ar ar-modes="scene-viewer webxr quick-look" ar-placement="floor" ar-scale="fixed" shadow-intensity="1.2" exposure="1.05" environment-image="neutral" hidden>
               <button id="insideArBtn" slot="ar-button" class="floating-ar-btn" type="button">📱 Ver em AR</button>
             </model-viewer>
           </div>
@@ -59,6 +86,7 @@
             <button id="quizBtn" class="menu-tile" type="button"><b>🧠</b><span>Quiz do Otthos</span></button>
             <button id="talkBtn" class="menu-tile" type="button"><b>💬</b><span>Conversar</span></button>
             <button id="collectionBtn" class="menu-tile" type="button"><b>🏅</b><span>Coleção</span></button>
+            <button id="avatarBtn" class="menu-tile" type="button"><b>👕</b><span>Meu Otthos</span></button>
             <button id="moldsBtn" class="menu-tile" type="button"><b>🧩</b><span>Moldes 3D</span></button>
             <button id="howBtn" class="menu-tile" type="button"><b>❓</b><span>Como jogar</span></button>
             <button id="settingsBtn" class="menu-tile" type="button"><b>⚙</b><span>Configurações</span></button>
@@ -78,6 +106,7 @@
           <div class="mini-avatar"><i></i><i></i><span id="hudLevel">1</span></div>
           <div class="xp-block"><b>XP</b><div><span id="xpFill"></span></div><small id="xpText">0 / 1000</small></div>
         </div>
+        <button id="needsToggleBtn" class="needs-summary" type="button" aria-label="Mostrar necessidades">❤️</button>
         <div class="needs-box" aria-label="Necessidades">
           <div title="Fome">🍎<span><i id="needHunger"></i></span></div>
           <div title="Energia">⚡<span><i id="needEnergy"></i></span></div>
@@ -87,27 +116,52 @@
         <div class="currency-box"><span>🪙</span><strong id="hudCoins">500</strong></div>
       </header>
 
-      <section id="missionCard" class="mission-card">
+      <section id="missionCard" class="mission-card" role="button" tabindex="0" aria-label="Expandir missão">
         <div class="mission-icon">◆</div>
         <div><small id="missionChapter">MISSÃO PRINCIPAL</small><strong id="missionTitle">Arrume sua casa</strong><p id="missionStep">Entre na Casa do Otthos.</p><div class="mission-progress"><i id="missionFill"></i></div></div>
       </section>
 
-      <nav class="quick-bar" aria-label="Atalhos">
+      <button id="quickToggleBtn" class="quick-toggle" type="button" aria-label="Abrir menu de vida">☰<span>Vida</span></button>
+      <nav id="quickBar" class="quick-bar" aria-label="Atalhos" hidden>
+        <button id="avatarGameBtn" type="button">👕<span>Otthos</span></button>
         <button id="inventoryBtn" type="button">🎒<span>Itens</span></button>
         <button id="buildBtn" type="button">🧱<span>Construir</span></button>
         <button id="mapBtn" type="button">🗺<span>Mapa</span></button>
         <button id="gameSettingsBtn" type="button">⚙<span>Menu</span></button>
       </nav>
 
+      <button id="miniNav" class="mini-nav" type="button" aria-label="Abrir mapa e navegação">
+        <canvas id="miniMapCanvas" width="220" height="138"></canvas>
+        <span class="mini-nav-copy"><b id="miniNavName">Mapa da Vila</b><small id="miniNavDistance">Toque para escolher um destino</small></span>
+        <i id="miniNavArrow">▲</i>
+      </button>
+
+      <div id="cameraControls" class="camera-controls" aria-label="Controles da câmera">
+        <button id="cameraNearBtn" type="button" aria-label="Aproximar câmera">＋</button>
+        <button id="cameraResetBtn" type="button" aria-label="Centralizar câmera">◎</button>
+        <button id="cameraFarBtn" type="button" aria-label="Afastar câmera">－</button>
+      </div>
+
       <div id="contextPrompt" class="context-prompt" hidden><span id="contextIcon">✋</span><div><b id="contextLabel">Interagir</b><small id="contextHint">Toque em AÇÃO</small></div></div>
 
       <div id="joystick" class="joystick" aria-label="Joystick"><div class="joystick-ring"><i id="joystickKnob"></i></div></div>
+
+      <div class="secondary-actions" aria-label="Habilidades do Otthos">
+        <button id="crouchBtn" class="skill-btn crouch" type="button"><b>▼</b><span>Abaixar</span></button>
+        <button id="miniBtn" class="skill-btn mini" type="button"><b>◱</b><span>Mini</span></button>
+        <button id="normalBtn" class="skill-btn normal" type="button"><b>N</b><span>Normal</span></button>
+        <button id="giantBtn" class="skill-btn giant" type="button"><b>⬡</b><span>Grande</span></button>
+        <button id="spinBtn" class="skill-btn spin" type="button"><b>↻</b><span>Girar</span></button>
+      </div>
+
       <div class="primary-actions" aria-label="Ações principais">
+        <button id="runBtn" class="round run" type="button"><b>🏃</b><span>Correr</span></button>
         <button id="specialBtn" class="round special" type="button"><b>🔥</b><span>Poder</span></button>
         <button id="actionBtn" class="round action" type="button"><b>✋</b><span>Ação</span></button>
         <button id="jumpBtn" class="round jump" type="button"><b>⬆</b><span>Pular</span></button>
       </div>
 
+      <div id="raceBadge" class="race-badge" hidden><b id="raceTitle">Desafio</b><span id="raceStatus">Prepare-se!</span></div>
       <div id="buildBadge" class="build-badge" hidden>CONSTRUÇÃO: <b id="buildTypeLabel">Bloco</b> — toque em AÇÃO para colocar</div>
       <div id="vehicleBadge" class="vehicle-badge" hidden>🚗 Carrinho ativo — AÇÃO para sair</div>
       <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -120,13 +174,9 @@
       </div>
     </div>
 
-    <div id="installBanner" class="install-banner" hidden>
-      <div><b>Instalar Otthos</b><span>Jogue como aplicativo, com tela cheia.</span></div>
-      <button id="installBannerBtn" class="btn primary" type="button">Instalar</button>
-      <button id="installBannerClose" class="icon-btn" type="button">✕</button>
-    </div>
   </div>
 
-  <script src="./app.js?v=600"></script>
+  <script src="./assets/js/save-db.js?v=613"></script>
+  <script src="./app.js?v=613"></script>
 </body>
 </html>

@@ -1,0 +1,158 @@
+{
+  "version": "V610",
+  "checks": [
+    {
+      "check": "Sintaxe app.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Sintaxe sw.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Sintaxe assets/js/save-db.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Sintaxe F12_TESTE_OTTHOS_V610_VEICULO_ESCALA_ISOLADA.js",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "API V610",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Storage V610",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Migração V609",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Service Worker V610",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "IndexedDB schema V610",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Manifest V610",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "404 V610",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Helper de escala isolada",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Escala imediata ao entrar",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Escala restaurada ao sair",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Loop preserva isolamento",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Casas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: NPCs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Interiores",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Mapa",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Construção",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Quiz",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Moldes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: AR",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Veículo",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Corridas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Preservado: Gamepad",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": ".nojekyll presente",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Referências locais do index",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "HTML sem IDs duplicados",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "Unidade de escala entrar/sair",
+      "ok": true,
+      "detail": "{\"vehicle\": {\"x\": 1, \"y\": 1, \"z\": 1}, \"restored\": {\"x\": 1.42, \"y\": 0.9656, \"z\": 1.42}}"
+    }
+  ],
+  "passed": 30,
+  "total": 30,
+  "failed": []
+}

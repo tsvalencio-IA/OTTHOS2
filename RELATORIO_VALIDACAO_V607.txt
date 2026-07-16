@@ -1,0 +1,52 @@
+OTTHOS LIFE WORLD V607 — RELATÓRIO DE VALIDAÇÃO
+================================================
+
+BASE
+- ZIP recebido: otthos-life-world-v606-veiculos-claude.zip
+- Estratégia: correções cirúrgicas; nenhuma remoção de sistemas de vida.
+
+VALIDAÇÕES ESTÁTICAS
+- app.js: sintaxe JavaScript aprovada por node --check.
+- sw.js: sintaxe JavaScript aprovada por node --check.
+- assets/js/save-db.js: sintaxe JavaScript aprovada por node --check.
+- F12_TESTE_OTTHOS_V607_VEICULOS.js: sintaxe aprovada.
+- index.html: 69 IDs únicos; nenhum ID duplicado.
+- Referências locais de HTML/manifest: nenhuma ausente.
+- .nojekyll: presente.
+- Cadeia V607: index, manifest, Service Worker, app e save-db coerentes.
+
+EXECUÇÃO EM NAVEGADOR
+- Chromium headless com DOM real e camada Three.js simulada.
+- Jogo inicializou sem erro JavaScript.
+- Mundo criou 6 casas, 5 NPCs, 5 inimigos e 110 interações.
+- Entrada no veículo: aprovada.
+- Otthos/acessórios ocultos ao dirigir: aprovado.
+- Carro visível e carro estacionado oculto: aprovado.
+- Quatro rodas e duas rodas dianteiras: aprovado.
+- Escala do carro permaneceu 1×1×1: aprovado.
+- Tamanho Grande foi guardado, carro forçou Normal e Grande voltou ao sair: aprovado.
+- Poder virou Buzina no carro: aprovado.
+- Buzina não criou bola de fogo: aprovado.
+- Pulo bloqueado no carro: aprovado.
+- Aceleração/direção: carro percorreu aproximadamente 2,07 unidades em 0,95 s no teste simulado.
+- Pausa por Esc: motor encerrou e modal correto abriu.
+- Retomada por Esc: jogo voltou e modal fechou.
+- Saída do carro: Otthos e acessórios voltaram; Poder foi restaurado.
+- IndexedDB: schema 607 exposto corretamente.
+- Erros JavaScript capturados: nenhum.
+
+RESPONSIVIDADE
+- 360×800: sem sobreposição ou botão fora da tela.
+- 390×844: sem sobreposição ou botão fora da tela.
+- 412×915: sem sobreposição ou botão fora da tela.
+- 800×360: sem sobreposição ou botão fora da tela.
+- 844×390: sem sobreposição ou botão fora da tela.
+- 1280×720: sem sobreposição ou botão fora da tela.
+- 1366×768: sem sobreposição ou botão fora da tela.
+- Com mapa/modal aberto: controles do jogo ficaram ocultos em todas as resoluções.
+
+LIMITES DA VALIDAÇÃO
+- O ambiente não permitiu navegação HTTP local e não possuía o Three.js real offline.
+- O teste de navegador usou uma camada Three.js simulada para validar lógica, DOM e estados.
+- Render WebGL real, áudio real, vibração, sensação de derrapagem e desempenho final devem ser confirmados no celular após publicação.
+- Não se afirma "zero bugs"; afirma-se apenas o que foi efetivamente testado acima.

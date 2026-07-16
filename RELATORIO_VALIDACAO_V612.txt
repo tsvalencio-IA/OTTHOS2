@@ -1,0 +1,26 @@
+OTTHOS LIFE WORLD V612 — RELATÓRIO DE VALIDAÇÃO
+Resultado: 21/21 aprovados
+
+[OK] Sintaxe de todos os JavaScripts — 9 arquivos
+[OK] HTML sem IDs duplicados — 73 IDs únicos
+[OK] Referências locais do HTML existem — 7 referências
+[OK] Manifest válido e V612 — ./index.html?v=612
+[OK] Service Worker V612 — cache/versionamento
+[OK] athos.glb fora do cache inicial — AR/modelo somente após uso
+[OK] Service Worker não apaga caches de outros projetos — CacheStorage compartilhado preservado
+[OK] model-viewer sem carregamento automático — somente ação explícita
+[OK] model-viewer possui retry — Promise resetável
+[OK] Visualizador tem acionamento explícito — botão e função
+[OK] Versão do jogo V612 — game/state
+[OK] Schema IndexedDB preservado em 610 — sem migração estrutural desnecessária
+[OK] Placas adaptativas — fonte/quebra de linha
+[OK] Placas visíveis dos dois lados — 3
+[OK] NPCs com pivôs animáveis — membros/ciclo
+[OK] NPC olha para Otthos próximo — rotação social
+[OK] Limite de partículas preservado — 40
+[OK] Teste real de performance incluído — FPS/p95/jank
+[OK] Núcleo crítico da V610 preservado — syncPlayerRootScale, toggleCrouch, enterVehicle, exitVehicle, resolveCollisions, updatePlayer, updateVehiclePhysics, stepVehicleSimulation
+[OK] Pacote sem duplicações acidentais da V611 — estrutura V610 limpa
+[OK] Arquivos essenciais presentes — ['index.html', 'app.js', 'style.css', 'sw.js', 'manifest.webmanifest', 'assets/js/save-db.js', 'athos.glb', '.nojekyll', 'icons/icon-192.png', 'icons/icon-512.png']
+
+Limitação honesta: o Chromium do ambiente bloqueou páginas locais por política administrativa. Não foi possível afirmar teste visual WebGL/FPS/AR neste ambiente. Os testes F12 foram incluídos para o endereço publicado.

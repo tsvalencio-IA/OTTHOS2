@@ -1,0 +1,104 @@
+{
+  "version": "V607_VEHICLE_INTEGRATION_SAFE",
+  "syntax": {
+    "app.js": true,
+    "sw.js": true,
+    "save-db.js": true,
+    "f12_vehicle_test": true
+  },
+  "browser_logic": {
+    "houses": 6,
+    "npcs": 5,
+    "enemies": 5,
+    "interactables": 110,
+    "vehicle_entered": true,
+    "player_hidden_in_vehicle": true,
+    "accessories_hidden_in_vehicle": true,
+    "vehicle_scale": {
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "four_wheels": true,
+    "two_front_wheels": true,
+    "horn_without_fireball": true,
+    "jump_blocked": true,
+    "drive_distance": 2.0750398310834526,
+    "drive_speed": 5.545305613216858,
+    "pause_modal": "Jogo pausado",
+    "engine_stopped_on_pause": true,
+    "resumed": true,
+    "ability_restored": true,
+    "db_schema": 607,
+    "runtime_errors": [],
+    "console_errors": []
+  },
+  "responsive_viewports": [
+    {
+      "viewport": [
+        360,
+        800
+      ],
+      "overlap": [],
+      "outside": [],
+      "modal_controls_visible": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "overlap": [],
+      "outside": [],
+      "modal_controls_visible": []
+    },
+    {
+      "viewport": [
+        412,
+        915
+      ],
+      "overlap": [],
+      "outside": [],
+      "modal_controls_visible": []
+    },
+    {
+      "viewport": [
+        800,
+        360
+      ],
+      "overlap": [],
+      "outside": [],
+      "modal_controls_visible": []
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "overlap": [],
+      "outside": [],
+      "modal_controls_visible": []
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "overlap": [],
+      "outside": [],
+      "modal_controls_visible": []
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "overlap": [],
+      "outside": [],
+      "modal_controls_visible": []
+    }
+  ],
+  "limitations": [
+    "Browser logic used real Chromium DOM with a simulated Three.js layer. Real WebGL/audio/mobile feel requires device testing."
+  ]
+}

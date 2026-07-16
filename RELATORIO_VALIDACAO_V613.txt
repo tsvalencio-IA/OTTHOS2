@@ -1,0 +1,17 @@
+OTTHOS LIFE WORLD V613
+
+version: OK
+joystick_fix: OK
+sprint: OK
+camera: OK
+route: OK
+minimap: OK
+art: OK
+sw613: OK
+
+IDs duplicados: 0
+CSS balance: 0
+Referências ausentes: 0
+Arquivos: 66
+
+Limitação: WebGL, FPS e sensação final dos controles não foram confirmados em navegador gráfico neste ambiente.

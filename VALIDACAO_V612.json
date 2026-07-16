@@ -1,0 +1,113 @@
+{
+  "version": "V612",
+  "checks": [
+    {
+      "check": "Sintaxe de todos os JavaScripts",
+      "ok": true,
+      "detail": "9 arquivos"
+    },
+    {
+      "check": "HTML sem IDs duplicados",
+      "ok": true,
+      "detail": "73 IDs únicos"
+    },
+    {
+      "check": "Referências locais do HTML existem",
+      "ok": true,
+      "detail": "7 referências"
+    },
+    {
+      "check": "Manifest válido e V612",
+      "ok": true,
+      "detail": "./index.html?v=612"
+    },
+    {
+      "check": "Service Worker V612",
+      "ok": true,
+      "detail": "cache/versionamento"
+    },
+    {
+      "check": "athos.glb fora do cache inicial",
+      "ok": true,
+      "detail": "AR/modelo somente após uso"
+    },
+    {
+      "check": "Service Worker não apaga caches de outros projetos",
+      "ok": true,
+      "detail": "CacheStorage compartilhado preservado"
+    },
+    {
+      "check": "model-viewer sem carregamento automático",
+      "ok": true,
+      "detail": "somente ação explícita"
+    },
+    {
+      "check": "model-viewer possui retry",
+      "ok": true,
+      "detail": "Promise resetável"
+    },
+    {
+      "check": "Visualizador tem acionamento explícito",
+      "ok": true,
+      "detail": "botão e função"
+    },
+    {
+      "check": "Versão do jogo V612",
+      "ok": true,
+      "detail": "game/state"
+    },
+    {
+      "check": "Schema IndexedDB preservado em 610",
+      "ok": true,
+      "detail": "sem migração estrutural desnecessária"
+    },
+    {
+      "check": "Placas adaptativas",
+      "ok": true,
+      "detail": "fonte/quebra de linha"
+    },
+    {
+      "check": "Placas visíveis dos dois lados",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "check": "NPCs com pivôs animáveis",
+      "ok": true,
+      "detail": "membros/ciclo"
+    },
+    {
+      "check": "NPC olha para Otthos próximo",
+      "ok": true,
+      "detail": "rotação social"
+    },
+    {
+      "check": "Limite de partículas preservado",
+      "ok": true,
+      "detail": "40"
+    },
+    {
+      "check": "Teste real de performance incluído",
+      "ok": true,
+      "detail": "FPS/p95/jank"
+    },
+    {
+      "check": "Núcleo crítico da V610 preservado",
+      "ok": true,
+      "detail": "syncPlayerRootScale, toggleCrouch, enterVehicle, exitVehicle, resolveCollisions, updatePlayer, updateVehiclePhysics, stepVehicleSimulation"
+    },
+    {
+      "check": "Pacote sem duplicações acidentais da V611",
+      "ok": true,
+      "detail": "estrutura V610 limpa"
+    },
+    {
+      "check": "Arquivos essenciais presentes",
+      "ok": true,
+      "detail": "['index.html', 'app.js', 'style.css', 'sw.js', 'manifest.webmanifest', 'assets/js/save-db.js', 'athos.glb', '.nojekyll', 'icons/icon-192.png', 'icons/icon-512.png']"
+    }
+  ],
+  "passed": 21,
+  "total": 21,
+  "failed": []
+}

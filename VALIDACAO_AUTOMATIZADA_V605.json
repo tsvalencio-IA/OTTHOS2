@@ -1,0 +1,195 @@
+{
+  "_aviso_v606_claude": "Este relatório valida apenas a V605 original e NÃO cobre a física de veículo, textura, céu ou estrada da V606. Não usar como evidência de teste da V606. Ver CHANGELOG_CLAUDE_VEICULOS.md.",
+  "version": "V605_STABLE_ROLEPLAY_FULL",
+  "syntax": {
+    "app.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "sw.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "assets/js/save-db.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "F12_TESTE_OTTHOS_V605_JOGABILIDADE_COMERCIAL.js": {
+      "ok": true,
+      "stderr": ""
+    }
+  },
+  "json": {
+    "manifest.webmanifest": {
+      "ok": true
+    }
+  },
+  "localReferences": {
+    "app.js": true,
+    "assets/js/save-db.js": true,
+    "athos.glb": true,
+    "icons/favicon.png": true,
+    "icons/icon-192.png": true,
+    "manifest.webmanifest": true,
+    "style.css": true
+  },
+  "runtime": {
+    "running": true,
+    "objects": {
+      "houses": 6,
+      "npcs": 5,
+      "enemies": 5,
+      "interactables": 110,
+      "builds": 0
+    },
+    "proceduralCharacter": true,
+    "visualBottomInitial": 0.009999999999999981,
+    "movementDistance": 5.296519047209061,
+    "limbsMoved": true,
+    "jumpMidY": 1.5449755100009501,
+    "jumpLanded": true,
+    "stoveContext": {
+      "id": "stove-home",
+      "label": "Cozinhar",
+      "type": "activity",
+      "activity": "stove"
+    },
+    "stoveModalTitle": "Cozinha",
+    "chestContext": {
+      "id": "chest-home",
+      "label": "Abrir baú",
+      "type": "activity",
+      "activity": "chest"
+    },
+    "chestModalTitle": "Baú da Casa do Otthos",
+    "npcContext": {
+      "id": "npc-nino",
+      "label": "Conversar com Nino",
+      "type": "npc",
+      "activity": null
+    },
+    "npcModalTitle": "Nino",
+    "landscapeMap": {
+      "modal": true,
+      "markers": 15,
+      "dests": 6,
+      "player": true,
+      "controls": [
+        {
+          "s": "#joystick",
+          "visibility": "hidden",
+          "pointer": "none"
+        },
+        {
+          "s": ".primary-actions",
+          "visibility": "hidden",
+          "pointer": "none"
+        },
+        {
+          "s": ".secondary-actions",
+          "visibility": "hidden",
+          "pointer": "none"
+        },
+        {
+          "s": ".quick-bar",
+          "visibility": "hidden",
+          "pointer": "none"
+        }
+      ]
+    },
+    "exceptions": 0
+  },
+  "responsive": {
+    "baseLayouts": [
+      {
+        "width": 640,
+        "height": 360,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 740,
+        "height": 360,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 915,
+        "height": 412,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 360,
+        "height": 800,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 412,
+        "height": 915,
+        "outside": [],
+        "overlaps": []
+      }
+    ],
+    "quickMenuLayouts": [
+      {
+        "width": 640,
+        "height": 360,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 740,
+        "height": 360,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 915,
+        "height": 412,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 360,
+        "height": 800,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "outside": [],
+        "overlaps": []
+      },
+      {
+        "width": 412,
+        "height": 915,
+        "outside": [],
+        "overlaps": []
+      }
+    ]
+  },
+  "limitations": [
+    "Automated render used a Three.js-compatible harness because the environment blocks local HTTP/WebGL CDN navigation. Final real-device validation is required on GitHub Pages."
+  ]
+}

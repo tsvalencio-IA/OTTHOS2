@@ -1,0 +1,26 @@
+ALTERADOS EM RELAÇÃO À V610
+- app.js
+- index.html
+- style.css
+- sw.js
+- manifest.webmanifest
+- 404.html
+- README.md
+
+CRIADOS
+- README_V612_RENDER_COMERCIAL_CORRIGIDO.md
+- CHANGELOG_V612.md
+- ARQUIVOS_ALTERADOS_V612.txt
+- F12_TESTE_OTTHOS_V612_REGRESSAO_VEICULO.js
+- F12_TESTE_OTTHOS_V612_RENDER_PERFORMANCE_REAL.js
+- RELATORIO_VALIDACAO_V612.txt
+- VALIDACAO_V612.json
+- ESTRUTURA_COMPLETA_V612.txt
+- ARQUIVOS_SHA256_V612.txt
+
+NÃO ALTERADOS
+- assets/js/save-db.js (schema permanece 610)
+- athos.glb
+- ícones
+- moldes
+- arquivos históricos já existentes na V610

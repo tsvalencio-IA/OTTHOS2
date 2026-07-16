@@ -1,0 +1,40 @@
+{
+  "version": 613,
+  "syntax": {
+    "app.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "sw.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "save-db.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "F12_TESTE_OTTHOS_V613_GAMEPLAY_ROTA_CAMERA.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "F12_TESTE_OTTHOS_V613_REGRESSAO_VEICULO.js": {
+      "ok": true,
+      "stderr": ""
+    }
+  },
+  "duplicate_ids": [],
+  "css_brace_balance": 0,
+  "missing_local_references": [],
+  "features": {
+    "version": true,
+    "joystick_fix": true,
+    "sprint": true,
+    "camera": true,
+    "route": true,
+    "minimap": true,
+    "art": true,
+    "sw613": true
+  },
+  "files": 66,
+  "limitations": "WebGL, FPS e sensação final dos controles não foram confirmados em navegador gráfico neste ambiente."
+}

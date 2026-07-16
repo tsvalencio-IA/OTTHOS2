@@ -1,0 +1,29 @@
+{
+  "version": 608,
+  "syntax": {
+    "app.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "sw.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "assets/js/save-db.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "F12_TESTE_OTTHOS_V608_VEICULO_ENTRADA.js": {
+      "ok": true,
+      "stderr": ""
+    }
+  },
+  "staticAssertions": true,
+  "vehicleMathSimulation": {
+    "distance": 7.676956813208509,
+    "speed": 10.58015094917103,
+    "x": -3.3148273549637737,
+    "z": -6.924419507702607
+  },
+  "note": "Render WebGL e sensação física ainda dependem do teste no aparelho publicado."
+}

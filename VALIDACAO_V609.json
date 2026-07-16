@@ -1,0 +1,124 @@
+{
+  "product": "Otthos Life World",
+  "version": "V609",
+  "scope": "Correção do roteamento de entradas do veículo e teste determinístico",
+  "results": [
+    {
+      "test": "Sintaxe app.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Sintaxe sw.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Sintaxe assets/js/save-db.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Sintaxe F12_TESTE_OTTHOS_V609_VEICULO_INPUT_FIXO.js",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Manifest JSON",
+      "status": "OK",
+      "detail": "./index.html?v=609"
+    },
+    {
+      "test": "Manifest V609",
+      "status": "OK",
+      "detail": "./index.html?v=609"
+    },
+    {
+      "test": "HTML sem IDs duplicados",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Referências locais do index",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Versão da API V609",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Chave de save V609",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Migração da V608",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Service Worker V609",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Resolvedor por fontes",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Entrada virtual persistente",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Teste físico por passos fixos",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Gamepad não sobrescrito pelo teclado",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Joystick usa canal próprio",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Veículo preserva controles e sistemas",
+      "status": "OK",
+      "detail": ""
+    },
+    {
+      "test": "Simulação matemática da física",
+      "status": "OK",
+      "detail": "{\"distance\": 13.257899810113464, \"speed\": 12.586531093174749, \"x\": 6.62563866278958, \"z\": -58.51641085351994}"
+    },
+    {
+      "test": "Versionamento index.html",
+      "status": "OK",
+      "detail": "?v=609"
+    },
+    {
+      "test": "Versionamento sw.js",
+      "status": "OK",
+      "detail": "otthos-life-world-v609"
+    },
+    {
+      "test": "Versionamento assets/js/save-db.js",
+      "status": "OK",
+      "detail": "schema: 609"
+    },
+    {
+      "test": "Versionamento 404.html",
+      "status": "OK",
+      "detail": "?v=609"
+    }
+  ],
+  "passed": 23,
+  "failed": 0
+}

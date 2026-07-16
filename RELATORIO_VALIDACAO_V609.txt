@@ -1,0 +1,28 @@
+OTTHOS LIFE WORLD V609 — RELATÓRIO DE VALIDAÇÃO
+
+Aprovados: 23
+Falhas: 0
+
+[OK] Sintaxe app.js — 
+[OK] Sintaxe sw.js — 
+[OK] Sintaxe assets/js/save-db.js — 
+[OK] Sintaxe F12_TESTE_OTTHOS_V609_VEICULO_INPUT_FIXO.js — 
+[OK] Manifest JSON — ./index.html?v=609
+[OK] Manifest V609 — ./index.html?v=609
+[OK] HTML sem IDs duplicados — 
+[OK] Referências locais do index — 
+[OK] Versão da API V609 — 
+[OK] Chave de save V609 — 
+[OK] Migração da V608 — 
+[OK] Service Worker V609 — 
+[OK] Resolvedor por fontes — 
+[OK] Entrada virtual persistente — 
+[OK] Teste físico por passos fixos — 
+[OK] Gamepad não sobrescrito pelo teclado — 
+[OK] Joystick usa canal próprio — 
+[OK] Veículo preserva controles e sistemas — 
+[OK] Simulação matemática da física — {"distance": 13.257899810113464, "speed": 12.586531093174749, "x": 6.62563866278958, "z": -58.51641085351994}
+[OK] Versionamento index.html — ?v=609
+[OK] Versionamento sw.js — otthos-life-world-v609
+[OK] Versionamento assets/js/save-db.js — schema: 609
+[OK] Versionamento 404.html — ?v=609
