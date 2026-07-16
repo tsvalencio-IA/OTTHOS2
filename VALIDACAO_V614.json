@@ -1,0 +1,31 @@
+{
+  "version": 614,
+  "syntax": {
+    "app.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "sw.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "save-db.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "F12_TESTE_OTTHOS_V614_JOYSTICK_RENDER.js": {
+      "ok": true,
+      "stderr": ""
+    }
+  },
+  "duplicate_html_ids": [],
+  "required_markers": [
+    "V614_COMMERCIAL_RENDER_CONTROL_FIXED",
+    "input.joyX=dx/max",
+    "decorateHouseCommercial",
+    "createCommercialDistrict",
+    "addVoxelOutline"
+  ],
+  "file_count": 72,
+  "note": "Static validation plus browser smoke test executed separately."
+}

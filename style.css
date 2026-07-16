@@ -250,3 +250,17 @@ body.modal-open .mini-nav,body.modal-open .camera-controls{visibility:hidden!imp
 @media (max-width:390px) and (orientation:portrait){
  .mini-nav{width:132px;height:90px}.mini-nav-copy small{display:none}
 }
+
+
+/* V614 — direção de arte voxel comercial e controle corrigido */
+:root{--panel-edge:#69d8ff;--panel-deep:#081b30;--panel-mid:#143657}
+.game-hud,.mission-card,.quick-toggle,.quick-bar,.context-prompt,.mini-nav,.camera-controls button,.primary-actions .round,.secondary-actions button{border-color:rgba(255,255,255,.86)!important;box-shadow:0 6px 0 rgba(4,15,28,.58),0 11px 24px rgba(0,0,0,.24)!important}
+.game-hud,.mission-card{background:linear-gradient(180deg,rgba(16,52,83,.94),rgba(5,24,43,.94))!important;backdrop-filter:blur(7px)}
+.mission-card{border-left:5px solid #48e7ff!important}.mission-title{letter-spacing:.01em}.stage canvas{filter:saturate(1.16) contrast(1.055) brightness(1.015)}
+.mini-nav{border-width:4px;background:#0b2139}.mini-nav.active{box-shadow:0 7px 0 rgba(0,45,73,.75),0 0 20px rgba(80,237,255,.7)!important}
+.primary-actions .round b{filter:drop-shadow(0 2px 0 rgba(0,0,0,.25))}.run{background:radial-gradient(circle at 34% 24%,#c8fbff,#19c8ec 48%,#08799d 90%)!important}
+.context-prompt{background:linear-gradient(180deg,rgba(11,38,64,.96),rgba(4,20,36,.96))!important;border:3px solid #62e8ff!important}
+.world-map{background:linear-gradient(#6cc8ff 0 19%,#77d85d 19% 100%)!important;border:4px solid #d6f6ff!important;box-shadow:inset 0 0 0 4px rgba(12,50,72,.22)}
+.map-region{font-weight:1000;text-shadow:0 2px 0 rgba(0,0,0,.28)}.map-route polyline{stroke:#4ff5ff!important;stroke-width:2.2!important;filter:drop-shadow(0 0 5px #005e89)}
+.modal-card{background:linear-gradient(180deg,#12385d,#071a2d)!important;border:3px solid #75e8ff!important}.modal-card .btn{border:2px solid rgba(255,255,255,.55)}
+@media (orientation:landscape){.mission-card{max-width:min(46vw,650px)}.mini-nav{left:calc(12px + var(--safe-left));}}

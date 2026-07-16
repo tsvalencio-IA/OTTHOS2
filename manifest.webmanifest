@@ -1,8 +1,8 @@
 {
-  "name": "Otthos Life World V613",
+  "name": "Otthos Life World V614",
   "short_name": "Otthos RP",
-  "description": "Roleplay infantil em mundo aberto voxel premium com corrida, câmera livre, navegação por rotas, construção, casas, veículos e missões.",
-  "start_url": "./index.html?v=613",
+  "description": "Mundo aberto voxel premium com render comercial, joystick corrigido, corrida, veículos, casas, construção, rotas e câmera livre.",
+  "start_url": "./index.html?v=614",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
